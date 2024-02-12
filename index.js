@@ -1,6 +1,7 @@
 
 import express from 'express';
 
+// To run express server
 const app = express();
 const PORT = 4000;
 

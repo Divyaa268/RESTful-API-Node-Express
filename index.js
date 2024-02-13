@@ -1,9 +1,14 @@
 
 import express from 'express';
+import routes from './src/routes/crmRoute';
+
 
 // To run express server
 const app = express();
 const PORT = 4000;
+
+// To run our routes inside of our app
+routes(app);
 
 // Creating the first end-point
 // Now, whenever we go to the browser, we will get this response

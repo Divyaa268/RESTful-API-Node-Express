@@ -75,3 +75,34 @@ export const updateContact = async(req, res) => {
         res.status(500).send(err);
     }
 }
+
+// // To delete a specific contact
+// // Contact is the name of the DB
+// export const deleteContact = async(req, res) => {
+//     try{
+//         const deletedContact = await Contact.remove({_id:params.contactId})
+//         res.json({message: 'Successfully deleted the contact!'});
+//     }
+//     catch(err)
+//     {
+//         res.status(500).send(err);
+//     }
+// }
+
+// To delete a specific contact
+// Contact is the name of the DB
+export const deleteContact = async (req, res) => {
+    try {
+        const deletedContact = await Contact.deleteOne({ _id: req.params.contactId });
+
+        if (deletedContact.deletedCount === 0) 
+        {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+        res.json({ message: 'Successfully deleted the contact!' });
+    } 
+    catch (err)
+     {
+        res.status(500).send(err);
+    }
+};

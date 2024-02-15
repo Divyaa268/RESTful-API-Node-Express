@@ -63,3 +63,15 @@ export const getContactID = async(req, res) => {
         res.status(500).send(err);
     }
 }
+
+// to Update using PUT -
+export const updateContact = async(req, res) => {
+    try{
+        const updatedContact = await Contact.findOneAndUpdate({_id:req.params.contactId}, req.body, {new:true})
+        res.json(updateContact);
+    }
+    catch(err)
+    {
+        res.status(500).send(err);
+    }
+}

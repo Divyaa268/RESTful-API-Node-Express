@@ -40,3 +40,26 @@ export const addNewContact = async (req, res) => {
         res.status(500).send(err);
     }
 };
+
+// to fetch all contacts
+export const getContacts = async (req, res) => {
+    try {
+        const contacts = await Contact.find({});
+        res.json(contacts);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
+// to fetch specific contact
+export const getContactID = async(req, res) => {
+    try
+    {
+        const contactByID = await Contact.findById(req.params.contactByID)
+        res.json(contactByID);
+    }
+    catch(err)
+    {
+        res.status(500).send(err);
+    }
+}
